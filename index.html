@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cristian &amp; Omar — Siti web, Bot e Automazioni</title>
+<meta name="description" content="Cristian Brigandì e Omar Zoccali: siti web, automazioni, cybersecurity, bot Telegram, recensioni NFC e menù digitali. Preventivo gratuito.">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%2300c853'/><text x='32' y='43' font-family='Arial' font-size='26' font-weight='bold' text-anchor='middle' fill='%23000'>C%26O</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html">C&amp;O <span>Digital</span></a>
+  <nav id="nav">
+    <a href="index.html" class="active">Home</a>
+    <a href="servizi.html">Servizi</a>
+    <a href="recensioni.html">Recensioni</a>
+    <a href="index.html#contatti" class="cta">Preventivo gratis</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Menu">☰</button>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="kicker">Cristian Brigandì &amp; Omar Zoccali — duo digitale</p>
+    <h1>Siti web che portano clienti.<br>Bot, automazioni e sicurezza per il resto.</h1>
+    <p class="sub">Siamo due amici, non un'agenzia fredda: ti ascoltiamo, costruiamo e restiamo al tuo fianco dopo il lancio.</p>
+    <div class="actions">
+      <a class="btn" href="#contatti">Richiedi preventivo gratis</a>
+      <a class="btn ghost" href="recensioni.html">Cosa dicono di noi</a>
+    </div>
+  </section>
+
+  <section class="grid3">
+    <div class="card"><h3>Siti vetrina</h3><p>Veloci, belli su telefono, ottimizzati per Google. Il tuo biglietto da visita online.</p><a href="servizi.html#siti">Dettagli →</a></div>
+    <div class="card"><h3>Bot Telegram</h3><p>Prenotazioni, preventivi automatici, alert e assistenza 24/7 senza assumere nessuno.</p><a href="servizi.html#bot">Dettagli →</a></div>
+    <div class="card"><h3>Automazioni</h3><p>Basta copia-incolla tra fogli, email e gestionali: colleghiamo tutto e risparmi ore.</p><a href="servizi.html#automazioni">Dettagli →</a></div>
+    <div class="card"><h3>Cybersecurity</h3><p>Controlli di sicurezza su siti e sistemi: vulnerabilità, configurazioni e buone pratiche.</p><a href="servizi.html#sicurezza">Dettagli →</a></div>
+    <div class="card"><h3>Recensioni NFC</h3><p>Targhette NFC per Google Reviews: i clienti lasciano recensioni con un tocco di telefono.</p><a href="servizi.html#nfc">Dettagli →</a></div>
+    <div class="card"><h3>Menù digitali QR</h3><p>Menù sempre aggiornati via QR code per ristoranti e bar: niente più ristampe.</p><a href="servizi.html#menu">Dettagli →</a></div>
+  </section>
+
+  <section>
+    <h2>Pacchetti one-shot, prezzi chiari</h2>
+    <p class="sub">Per attività locali. Paghi una volta, online in 24-48h. <a href="servizi.html#pacchetti">Vedi dettagli →</a></p>
+    <ul class="tools-list">
+      <li><strong>Menù QR + Recensioni — 290€</strong><span>Ristoranti e bar: menù su telefono + QR da tavolo + recensioni Google.</span></li>
+      <li><strong>Vetrina 48h — 390€</strong><span>Artigiani e professionisti: 1 pagina che fa chiamare su WhatsApp.</span></li>
+      <li><strong>Audit + Fix — da 199€</strong><span>Chi ha già un sito: report sicurezza + fix, re-check incluso.</span></li>
+    </ul>
+  </section>
+
+  <section class="duo">
+    <h2>Chi siamo</h2>
+    <div class="duo-grid">
+      <div class="person"><div class="avatar">CB</div><h3>Cristian Brigandì</h3><p>Sviluppo web, automazioni e cybersecurity: siti, bot, controlli di sicurezza e sistemi che lavorano da soli.</p></div>
+      <div class="person"><div class="avatar">OZ</div><h3>Omar Zoccali</h3><p>Social media e tutto il resto: segue i social dei clienti e condivide con Cristian sviluppo, automazioni e assistenza.</p></div>
+    </div>
+  </section>
+
+  <section class="steps">
+    <h2>Come lavoriamo</h2>
+    <ol>
+      <li><strong>Chiacchierata gratis</strong> — capiamo cosa ti serve davvero (e ti diciamo no se non servi tu a noi).</li>
+      <li><strong>Preventivo chiaro</strong> — prezzo fisso, tempi scritti, niente sorprese.</li>
+      <li><strong>Costruzione + test</strong> — vedi i progressi e chiedi modifiche.</li>
+      <li><strong>Lancio + assistenza</strong> — pubblicazione e supporto dopo la consegna.</li>
+    </ol>
+  </section>
+
+  <section id="contatti" class="card form-card">
+    <h2>Richiedi un preventivo gratis</h2>
+    <p>Rispondiamo entro 24 ore lavorative.</p>
+    <form name="contatti" method="POST" data-netlify="true" netlify-honeypot="extra">
+      <p class="hidden"><label>Non compilare: <input name="extra"></label></p>
+      <label>Nome<input type="text" name="nome" required maxlength="80"></label>
+      <label>Email o telefono<input type="text" name="contatto" required maxlength="120"></label>
+      <label>Cosa ti serve?
+        <select name="servizio">
+          <option>Sito vetrina</option><option>Bot Telegram</option>
+          <option>Automazione</option><option>Cybersecurity</option>
+          <option>Recensioni NFC Google</option><option>Menù digitale / QR</option>
+          <option>Social media</option><option>Manutenzione sito</option>
+          <option>Altro</option>
+        </select>
+      </label>
+      <label>Messaggio<textarea name="messaggio" rows="4" required maxlength="2000"></textarea></label>
+      <button type="submit">Invia richiesta →</button>
+    </form>
+  </section>
+</main>
+
+<footer>© 2026 Cristian &amp; Omar — C&amp;O Digital · <a href="recensioni.html">Recensioni</a></footer>
+<script src="js/main.js"></script>
+</body>
+</html>

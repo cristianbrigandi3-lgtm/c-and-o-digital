@@ -1,0 +1,6 @@
+# C&O Digital — sito servizi (pronto per Netlify)
+# Il form contatti usa Netlify Forms (si attiva da solo al primo deploy).
+
+[build]
+  publish = "."
+  functions = "netlify/functions"

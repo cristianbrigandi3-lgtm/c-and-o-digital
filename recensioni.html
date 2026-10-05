@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recensioni — Cristian &amp; Omar</title>
+<meta name="description" content="Le recensioni dei nostri clienti. Hai lavorato con noi? Lascia la tua!">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%2300c853'/><text x='32' y='43' font-family='Arial' font-size='26' font-weight='bold' text-anchor='middle' fill='%23000'>C%26O</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html">C&amp;O <span>Digital</span></a>
+  <nav id="nav">
+    <a href="index.html">Home</a>
+    <a href="servizi.html">Servizi</a>
+    <a href="recensioni.html" class="active">Recensioni</a>
+    <a href="index.html#contatti" class="cta">Preventivo gratis</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Menu">☰</button>
+</header>
+
+<main>
+  <h1 class="page-title">Recensioni</h1>
+  <p class="sub center" id="media">Caricamento…</p>
+  <div id="lista" class="reviews"></div>
+
+  <section class="card form-card">
+    <h2>Hai lavorato con noi? Raccontalo</h2>
+    <form id="form-recensione">
+      <label>Nome<input type="text" id="f-nome" required maxlength="60" placeholder="Il tuo nome"></label>
+      <label>Voto
+        <select id="f-voto">
+          <option value="5">★★★★★ (5)</option><option value="4">★★★★ (4)</option>
+          <option value="3">★★★ (3)</option><option value="2">★★ (2)</option>
+          <option value="1">★ (1)</option>
+        </select>
+      </label>
+      <label>Recensione<textarea id="f-testo" rows="4" required maxlength="1000" placeholder="Com'è andata?"></textarea></label>
+      <button type="submit" id="f-btn">Pubblica recensione</button>
+      <p id="f-msg" class="form-msg"></p>
+    </form>
+  </section>
+</main>
+
+<footer>© 2026 Cristian &amp; Omar — C&amp;O Digital · <a href="index.html">Home</a></footer>
+<script src="js/main.js"></script>
+<script src="js/recensioni.js"></script>
+</body>
+</html>
