@@ -3,47 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Recensioni — Cristian &amp; Omar</title>
-<meta name="description" content="Le recensioni dei nostri clienti. Hai lavorato con noi? Lascia la tua!">
+<title>Recensioni — C&amp;O</title>
+<meta name="description" content="Recensioni dei clienti C&O. Hai lavorato con noi? Scrivici.">
 <link rel="stylesheet" href="css/styles.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%2300c853'/><text x='32' y='43' font-family='Arial' font-size='26' font-weight='bold' text-anchor='middle' fill='%23000'>C%26O</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='8' fill='%23faf7f2'/><text x='32' y='42' font-family='Georgia' font-size='24' font-weight='bold' text-anchor='middle' fill='%2324472f'>C%26O</text></svg>">
 </head>
 <body>
-<header class="topbar">
-  <a class="brand" href="index.html">C&amp;O <span>Digital</span></a>
+<header class="topbar"><div class="topbar-in">
+  <a class="brand" href="index.html">C&amp;O <small>Cristian &amp; Omar · Patti (ME)</small></a>
   <nav id="nav">
     <a href="index.html">Home</a>
-    <a href="servizi.html">Servizi</a>
+    <a href="servizi.html">Servizi e prezzi</a>
     <a href="recensioni.html" class="active">Recensioni</a>
     <a href="index.html#contatti" class="cta">Preventivo gratis</a>
   </nav>
-  <button class="burger" id="burger" aria-label="Menu">☰</button>
-</header>
+  <button class="burger" id="burger" aria-label="Menu">Menu</button>
+</div></header>
 
 <main>
-  <h1 class="page-title">Recensioni</h1>
-  <p class="sub center" id="media">Caricamento…</p>
-  <div id="lista" class="reviews"></div>
+  <section class="hero" style="grid-template-columns:1fr;gap:0;padding-bottom:16px">
+    <div>
+      <p class="kicker">Recensioni</p>
+      <h1>Quello che dicono di noi.</h1>
+      <p class="sub" id="media">Caricamento…</p>
+    </div>
+  </section>
 
-  <section class="card form-card">
-    <h2>Hai lavorato con noi? Raccontalo</h2>
-    <form id="form-recensione">
-      <label>Nome<input type="text" id="f-nome" required maxlength="60" placeholder="Il tuo nome"></label>
+  <section class="blocco">
+    <div id="lista"></div>
+  </section>
+
+  <section class="blocco" id="scrivi">
+    <h2>Hai lavorato con noi?</h2>
+    <p class="sub">Compila qui sotto: la recensione arriva a noi via email e la pubblichiamo dopo verifica. Niente recensioni inventate.</p>
+    <form action="https://formsubmit.co/claudeuser64@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Nuova recensione C&O da moderare">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <label>Nome<input type="text" name="nome" id="f-nome" required maxlength="60" autocomplete="name"></label>
       <label>Voto
-        <select id="f-voto">
-          <option value="5">★★★★★ (5)</option><option value="4">★★★★ (4)</option>
-          <option value="3">★★★ (3)</option><option value="2">★★ (2)</option>
-          <option value="1">★ (1)</option>
+        <select name="voto" id="f-voto">
+          <option value="5">5 — ottimo</option><option value="4">4 — buono</option>
+          <option value="3">3 — nella media</option><option value="2">2 — sotto le attese</option>
+          <option value="1">1 — male</option>
         </select>
       </label>
-      <label>Recensione<textarea id="f-testo" rows="4" required maxlength="1000" placeholder="Com'è andata?"></textarea></label>
-      <button type="submit" id="f-btn">Pubblica recensione</button>
-      <p id="f-msg" class="form-msg"></p>
+      <label>Recensione<textarea name="testo" id="f-testo" rows="4" required maxlength="1000"></textarea></label>
+      <button type="submit">Invia recensione</button>
     </form>
   </section>
 </main>
 
-<footer>© 2026 Cristian &amp; Omar — C&amp;O Digital · <a href="index.html">Home</a></footer>
+<footer><div class="topbar-in">
+  <span>© <span id="anno">2026</span> Cristian &amp; Omar — C&amp;O · Patti (ME)</span>
+  <nav style="display:flex"><a href="index.html">Home</a><a href="servizi.html">Prezzi</a></nav>
+</div></footer>
 <script src="js/main.js"></script>
 <script src="js/recensioni.js"></script>
 </body>
