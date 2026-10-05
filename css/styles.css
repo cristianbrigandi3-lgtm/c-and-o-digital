@@ -1,11 +1,11 @@
 :root {
-  --carta: #161310;
-  --carta-2: #201b15;
-  --inchiostro: #ece4d4;
-  --muted: #a89c88;
-  --linea: #332b20;
-  --verde: #c8a24b;
-  --verde-hover: #dbb65e;
+  --carta: #fdfbf6;
+  --carta-2: #f4eee1;
+  --inchiostro: #1a1512;
+  --muted: #6f6255;
+  --linea: #e3d8c2;
+  --mattone: #8f3a22;
+  --mattone-hover: #75301c;
   --radius: 6px;
   --max: 1060px;
 }
@@ -21,7 +21,7 @@ h1, h2, h3, .serif {
   font-weight: 600; line-height: 1.22; letter-spacing: -0.01em;
   color: var(--inchiostro);
 }
-a { color: var(--verde); }
+a { color: var(--mattone); }
 .topbar {
   border-bottom: 1px solid var(--linea);
   background: var(--carta);
@@ -35,11 +35,11 @@ a { color: var(--verde); }
 nav { margin-left: auto; display: flex; gap: 20px; font-size: 0.95rem; }
 nav a { color: var(--muted); text-decoration: none; }
 nav a:hover, nav a.active { color: var(--inchiostro); text-decoration: underline; text-underline-offset: 4px; }
-nav a.cta { color: var(--verde); font-weight: 600; }
+nav a.cta { color: var(--mattone); font-weight: 600; }
 .burger { display: none; margin-left: auto; background: none; border: 1px solid var(--linea); border-radius: var(--radius); padding: 6px 12px; font-size: 1rem; color: var(--inchiostro); }
 .skip { position: absolute; left: -9999px; top: 0; background: var(--inchiostro); color: #fff; padding: 10px 18px; z-index: 50; border-radius: 0 0 var(--radius) 0; }
 .skip:focus { left: 0; }
-a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--verde); outline-offset: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--mattone); outline-offset: 2px; }
 main { max-width: var(--max); margin: 0 auto; padding: 0 22px 80px; }
 .hero { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 48px; padding: 56px 0 40px; align-items: start; }
 .kicker { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
@@ -49,10 +49,10 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 22px 80px; }
 .nota { font-size: 0.88rem; color: var(--muted); margin-top: 14px; max-width: 52ch; }
 .actions { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
 .btn {
-  display: inline-block; background: var(--verde); color: #161310; text-decoration: none;
-  padding: 11px 22px; border-radius: var(--radius); font-weight: 700; font-size: 0.95rem; border: 1px solid var(--verde);
+  display: inline-block; background: var(--inchiostro); color: #fdfbf6; text-decoration: none;
+  padding: 11px 22px; border-radius: var(--radius); font-weight: 700; font-size: 0.95rem; border: 1px solid var(--inchiostro);
 }
-.btn:hover { background: var(--verde-hover); border-color: var(--verde-hover); }
+.btn:hover { background: #000; border-color: #000; }
 .link { font-weight: 600; font-size: 0.95rem; }
 .scheda {
   border: 1px solid var(--linea); background: var(--carta-2);
@@ -94,15 +94,15 @@ ol.passaggi strong { color: var(--inchiostro); }
 form label { display: block; margin: 12px 0; font-weight: 600; font-size: 0.93rem; }
 form input, form select, form textarea {
   width: 100%; margin-top: 6px; padding: 10px 12px; font: inherit;
-  background: #100d0a; color: var(--inchiostro);
+  background: #fff; color: var(--inchiostro);
   border: 1px solid var(--linea); border-radius: var(--radius);
 }
-form input:focus, form select:focus, form textarea:focus { outline: 2px solid var(--verde); outline-offset: 1px; border-color: var(--verde); }
+form input:focus, form select:focus, form textarea:focus { outline: 2px solid var(--mattone); outline-offset: 1px; border-color: var(--mattone); }
 form button {
-  background: var(--verde); color: #161310; font-weight: 700; font-size: 0.95rem;
-  border: 1px solid var(--verde); border-radius: var(--radius); padding: 11px 22px; cursor: pointer;
+  background: var(--inchiostro); color: #fdfbf6; font-weight: 700; font-size: 0.95rem;
+  border: 1px solid var(--mattone); border-radius: var(--radius); padding: 11px 22px; cursor: pointer;
 }
-form button:hover { background: var(--verde-hover); }
+form button:hover { background: #000; }
 .recensione { border-top: 1px solid var(--linea); padding: 16px 0; }
 .recensione .stars { letter-spacing: 2px; }
 .recensione .who { color: var(--muted); font-size: 0.88rem; margin-top: 6px; }
