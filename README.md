@@ -8,13 +8,10 @@ Sito vetrina statico, senza backend. Deploy su GitHub Pages.
 - `recensioni.html` — legge `data/recensioni.json`, invio via FormSubmit da moderare
 - `404.html` — non trovata
 
-## Lavori (`index.html#lavori`)
-Loghi reali in `img/lavori/` copiati dai progetti: non cancellarli.
-Per aggiungere un lavoro: copia il blocco `<li class="lavoro">`, cambia meta/nome/descrizione/stack.
-Per lo screenshot: aggiungi `<img>` con `loading="lazy"` e `width/height`.
-
 ## Foto team (`index.html#team`)
 Sostituisci `<div class="foto-slot">` con `<img src="img/team/cristian.jpg" ...>` (72x72, `object-fit: cover` già gestito dal CSS).
+
+## Form
 Nessun Netlify. I form puntano a `https://formsubmit.co/claudeuser64@gmail.com`.
 Prima attivazione: arriva email di conferma FormSubmit, cliccare "Activate".
 
