@@ -3,83 +3,149 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>C&amp;O — Cristian &amp; Omar · Siti web e automazioni a Patti</title>
-<meta name="description" content="Cristian Brigandì e Omar Zoccali: siti vetrina in 48h, menù QR, bot Telegram e audit sicurezza per attività locali. Preventivo gratuito.">
+<title>C&amp;O — Cristian &amp; Omar · Siti, menù QR e bot a Patti</title>
+<meta name="description" content="Cristian e Omar, due ragazzi di Patti: siti vetrina in 48h, menù QR per ristoranti, bot Telegram. Parli con chi fa il lavoro. Preventivo gratis.">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='8' fill='%23faf7f2'/><text x='32' y='42' font-family='Georgia' font-size='24' font-weight='bold' text-anchor='middle' fill='%2324472f'>C%26O</text></svg>">
 </head>
 <body>
+<a class="skip" href="#contenuto">Salta al contenuto</a>
 <header class="topbar"><div class="topbar-in">
   <a class="brand" href="index.html">C&amp;O <small>Cristian &amp; Omar · Patti (ME)</small></a>
-  <nav id="nav">
-    <a href="index.html" class="active">Home</a>
+  <nav id="nav" aria-label="Navigazione principale">
+    <a href="index.html" class="active" aria-current="page">Home</a>
     <a href="servizi.html">Servizi e prezzi</a>
     <a href="recensioni.html">Recensioni</a>
-    <a href="#contatti" class="cta">Preventivo gratis</a>
+    <a href="#contatti" class="cta">Scrivici</a>
   </nav>
-  <button class="burger" id="burger" aria-label="Menu">Menu</button>
+  <button class="burger" id="burger" aria-label="Apri menu" aria-expanded="false">Menu</button>
 </div></header>
 
-<main>
+<main id="contenuto">
   <section class="hero">
     <div>
-      <p class="kicker">Duo digitale · dal 2025</p>
-      <h1>Siti semplici che fanno chiamare i clienti.</h1>
-      <p class="sub">Lavoriamo con ristoranti, artigiani e professionisti della zona: una pagina chiara, un pulsante WhatsApp sempre visibile, niente gergo. Se non ti serve niente, te lo diciamo.</p>
+      <p class="kicker">00 — Due persone, non un'agenzia</p>
+      <h1>Facciamo siti, menù QR e bot per attività a Patti e dintorni.</h1>
+      <p class="sub">Siamo Cristian e Omar. Cristian scrive il codice, Omar tiene il filo con i clienti e cura le parole. Se ci scrivi, ti risponde uno di noi due — non un commerciale, non un bot.</p>
       <div class="actions">
-        <a class="btn" href="#contatti">Richiedi preventivo gratis</a>
-        <a class="link" href="servizi.html#pacchetti">Vedi prezzi →</a>
+        <a class="btn" href="#contatti">Raccontaci cosa ti serve</a>
       </div>
+      <p class="nota">Rispondiamo entro 24h lavorative. Se il progetto non ha senso per te, te lo diciamo e non ti chiediamo niente.</p>
     </div>
-    <aside class="scheda">
-      <h3>Pacchetti one-shot</h3>
+    <aside class="banco" aria-label="Dal nostro banco di lavoro">
+      <p class="banco-titolo">Dal banco di lavoro <span>ott 2026</span></p>
       <ul>
-        <li><span>Menù QR + recensioni · 24h</span><span class="p">290€</span></li>
-        <li><span>Vetrina 1 pagina · 48h</span><span class="p">390€</span></li>
-        <li><span>Audit sito + report · 72h</span><span class="p">da 199€</span></li>
+        <li><code>menu-vicoletto/index.html</code><span>menù completo, 60+ piatti</span></li>
+        <li><code>menu-incrocio/index.html</code><span>menù QR + ricerca</span></li>
+        <li><code>audit.py → report-vicoletto.md</code><span>check sicurezza passivo</span></li>
       </ul>
+      <p class="banco-nota">Questi sono file veri, aperti adesso nei nostri editor. <a href="#lavori">Vedi i lavori ↓</a></p>
     </aside>
   </section>
 
-  <section class="blocco">
-    <h2>Cosa facciamo, in pratica</h2>
-    <p class="sub">Quattro cose, fatte bene. Il resto lo diciamo no.</p>
-    <div class="tools">
-      <div><h3>Siti vetrina</h3><p>Una o poche pagine, veloci su telefono, con orari, mappa e modulo contatti.</p></div>
-      <div><h3>Menù QR e recensioni</h3><p>Menù aggiornabile senza ristampe + targhette per recensioni Google.</p></div>
-      <div><h3>Bot e preventivatori</h3><p>Bot Telegram per prenotazioni e preventivatori che arrivano su WhatsApp.</p></div>
-      <div><h3>Audit sicurezza</h3><p>Controllo passivo del sito esistente con report e fix. Solo con autorizzazione.</p></div>
+  <section class="blocco" id="lavori">
+    <p class="kicker">01 — Lavori</p>
+    <h2>Cose che abbiamo costruito davvero.</h2>
+    <p class="sub">Bozze e demo su attività reali della zona, prezzi da confermare coi titolari. Niente mockup inventati: ogni voce qui sotto corrisponde a un file che esiste.</p>
+    <ol class="lavori">
+      <li class="lavoro">
+        <img src="img/lavori/logo-vicoletto.png" alt="Logo Il Vicoletto" width="250" height="83" loading="lazy">
+        <div>
+          <p class="lavoro-meta">Ristorante · Patti — menù digitale</p>
+          <h3>Il Vicoletto</h3>
+          <p>Menù completo online: stuzzicherie, 40+ pizze, primi, secondi, bevande. Ricerca live, sezioni per impasti, pagina eventi e QR da tavolo. Il listino più grosso che abbiamo impaginato finora.</p>
+          <p class="lavoro-stack">HTML statico · 1 file · ricerca in JS · QR stampabili</p>
+        </div>
+      </li>
+      <li class="lavoro">
+        <img src="img/lavori/logo-incrocio.png" alt="Logo L'Incrocio" width="324" height="195" loading="lazy">
+        <div>
+          <p class="lavoro-meta">Pizzeria · Patti — menù QR</p>
+          <h3>L'Incrocio</h3>
+          <p>Menù leggero da telefono con navigazione sticky per categorie, ricerca istantanea e tasti Chiama/WhatsApp sempre a portata di pollice. Pensato per chi ordina dall'auto.</p>
+          <p class="lavoro-stack">HTML statico · nav sticky · CTA telefono</p>
+        </div>
+      </li>
+      <li class="lavoro">
+        <img src="img/lavori/logo-mastronino.png" alt="Logo Mastro Nino" width="136" height="164" loading="lazy">
+        <div>
+          <p class="lavoro-meta">Paninoteca · Patti — menù QR</p>
+          <h3>Mastro Nino</h3>
+          <p>Menù essenziale pizze/panini/fritti con tag "più ordinata" e prezzi chiari. Il formato da cui partiamo quando un locale vuole andare online in un giorno.</p>
+          <p class="lavoro-stack">HTML statico · 1 file · fatto per la stampa QR</p>
+        </div>
+      </li>
+      <li class="lavoro lavoro-testo">
+        <div>
+          <p class="lavoro-meta">Artigiani e professionisti — gestionale preventivi</p>
+          <h3>PreventivAI <span class="stato">in sviluppo</span></h3>
+          <p>App per fare preventivi seri senza Excel: clienti, stati, PDF, pagina pubblica di accettazione e promemoria automatici. La stiamo costruendo per chi fa 10 preventivi a settimana e ne perde 3 per strada.</p>
+          <p class="lavoro-stack">Next.js · Prisma · PDF · WhatsApp</p>
+        </div>
+      </li>
+      <li class="lavoro lavoro-vuoto">
+        <div>
+          <p class="lavoro-meta">Prossimo slot libero</p>
+          <h3>Il tuo locale qui?</h3>
+          <p>Teniamo un progetto alla volta per consegnare in 24-48h. Se hai un menù cartaceo o un sito fermo al 2015, mandacelo: ti diciamo in un giorno se e quanto costa sistemarlo.</p>
+          <p><a class="link" href="#contatti">Mandaci il tuo caso →</a></p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="blocco" id="servizi">
+    <p class="kicker">02 — Servizi</p>
+    <h2>Tre pacchetti, prezzi scritti qui.</h2>
+    <p class="sub">Paghi una volta, niente canoni nascosti. Dettagli e cosa è escluso in <a href="servizi.html#pacchetti">Servizi e prezzi</a>.</p>
+    <ul class="righe">
+      <li><span class="num">01</span><div><h3>Menù QR + Recensioni — 290€</h3><p>Menù su telefono, 3 QR pronti da stampare, pagina recensioni Google. Pronto in 24h.</p></div></li>
+      <li><span class="num">02</span><div><h3>Vetrina 1 pagina — 390€</h3><p>Servizi, foto, mappa, pulsante WhatsApp. Per farti chiamare, non per fare scena. Pronta in 48h.</p></div></li>
+      <li><span class="num">03</span><div><h3>Audit + fix — da 199€</h3><p>Controllo del sito che hai già, report leggibile, re-check dopo 30 giorni. Solo con tua autorizzazione.</p></div></li>
+    </ul>
+  </section>
+
+  <section class="blocco" id="team">
+    <p class="kicker">03 — Chi siamo</p>
+    <h2>Due nomi, due facce.</h2>
+    <p class="sub">Niente foto stock, niente "team di esperti". Per ora le nostre foto vere non sono ancora qui — lo spazio sotto è pronto per metterle.</p>
+    <div class="persone">
+      <article class="persona">
+        <!-- FOTO: sostituisci il div .foto-slot con <img src="img/team/cristian.jpg" alt="Cristian Brigandì" ...> -->
+        <div class="foto-slot" aria-hidden="true">CB</div>
+        <h3>Cristian Brigandì</h3>
+        <p class="ruolo">Sviluppo e sicurezza</p>
+        <p>Sono quello che scrive il codice e poi prova a romperlo: siti, bot Telegram, script di controllo sicurezza. Se qualcosa non funziona alle 23, sono io a sistemarlo. Preferisco una pagina veloce che carica a una bella che non si apre.</p>
+      </article>
+      <article class="persona">
+        <!-- FOTO: sostituisci il div .foto-slot con <img src="img/team/omar.jpg" alt="Omar Zoccali" ...> -->
+        <div class="foto-slot" aria-hidden="true">OZ</div>
+        <h3>Omar Zoccali</h3>
+        <p class="ruolo">Parole, social e clienti</p>
+        <p>Sono quello con cui parli: capisco cosa ti serve, scrivo i testi del sito e tengo aggiornati i social. Se una cosa non ti serve, sono io a dirtelo — anche se ci rimettiamo il lavoro.</p>
+      </article>
     </div>
   </section>
 
-  <section class="blocco">
-    <h2>Come lavoriamo</h2>
-    <div class="duecol">
-      <div>
-        <ol class="passaggi">
-          <li><strong>Chiacchierata gratis</strong> — 15 minuti, capiamo se ha senso.</li>
-          <li><strong>Prezzo fisso scritto</strong> — acconto 30%, saldo alla consegna con ricevuta.</li>
-          <li><strong>Bozza in 48h</strong> — vedi il sito e chiedi una tornata di modifiche.</li>
-          <li><strong>Messa online + assistenza</strong> — 30 giorni di correzioni bug inclusi.</li>
-        </ol>
-      </div>
-      <div>
-        <h3>Chi siamo</h3>
-        <div class="persone">
-          <div class="persona"><h3>Cristian Brigandì</h3><p class="ruolo">Sviluppo e sicurezza</p><p>Siti, bot Telegram, automazioni e controlli di sicurezza.</p></div>
-          <div class="persona"><h3>Omar Zoccali</h3><p class="ruolo">Social e assistenza</p><p>Contenuti social, testi e supporto ai clienti dopo il lancio.</p></div>
-        </div>
-      </div>
-    </div>
+  <section class="blocco" id="processo">
+    <p class="kicker">04 — Come funziona</p>
+    <h2>Quattro messaggi e si parte.</h2>
+    <ol class="passaggi">
+      <li><strong>Ci mandi foto e orari</strong> — dal telefono, come sono. Bastano quelli per capire.</li>
+      <li><strong>Ti diciamo se ha senso</strong> — e quanto costa, prezzo fisso. Se non serve, te lo diciamo.</li>
+      <li><strong>Vedi la bozza</strong> — entro 24-48h. Una tornata di modifiche inclusa.</li>
+      <li><strong>Online e paghi</strong> — acconto 30%, saldo alla consegna con ricevuta. 30 giorni di correzioni bug inclusi.</li>
+    </ol>
   </section>
 
   <section class="blocco" id="contatti">
-    <h2>Preventivo gratis, risposta entro 24h lavorative</h2>
-    <p class="sub">Scrivi due righe su cosa ti serve. Oppure email diretta: <a href="mailto:claudeuser64@gmail.com">claudeuser64@gmail.com</a></p>
+    <p class="kicker">05 — Contatti</p>
+    <h2>Scrivici due righe.</h2>
+    <p class="sub">Risponde uno di noi entro 24h lavorative. Oppure email diretta: <a href="mailto:claudeuser64@gmail.com">claudeuser64@gmail.com</a></p>
     <div class="contatti-box">
       <div>
-        <p><strong>Cosa ci serve da te:</strong> nome attività, 3-4 foto dal telefono, orari, link alla scheda Google se ce l'hai. Al resto pensiamo noi.</p>
-        <p><strong>Pagamento:</strong> bonifico o contanti alla consegna con ricevuta e ritenuta come da contratto. Nessun anticipo oltre il 30%.</p>
+        <p><strong>Cosa allegare:</strong> nome attività, 3-4 foto, orari, link alla scheda Google se ce l'hai.</p>
+        <p><strong>Pagamento:</strong> bonifico o contanti con ricevuta. Mai più del 30% di acconto.</p>
       </div>
       <form action="https://formsubmit.co/claudeuser64@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="Nuovo preventivo C&O dal sito">
@@ -97,7 +163,7 @@
           </select>
         </label>
         <label>Messaggio<textarea name="messaggio" rows="4" required maxlength="2000" placeholder="Es. pizzeria a Patti, ho foto e orari, vorrei menù QR"></textarea></label>
-        <button type="submit">Invia richiesta</button>
+        <button type="submit">Invia — ti risponde Cristian o Omar</button>
       </form>
     </div>
   </section>
@@ -105,7 +171,7 @@
 
 <footer><div class="topbar-in">
   <span>© <span id="anno">2026</span> Cristian &amp; Omar — C&amp;O · Patti (ME)</span>
-  <nav style="display:flex"><a href="servizi.html">Prezzi</a><a href="recensioni.html">Recensioni</a></nav>
+  <nav style="display:flex" aria-label="Link secondari"><a href="servizi.html">Prezzi</a><a href="recensioni.html">Recensioni</a></nav>
 </div></footer>
 <script src="js/main.js"></script>
 </body>
