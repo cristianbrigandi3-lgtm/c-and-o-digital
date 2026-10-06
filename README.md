@@ -12,7 +12,7 @@ Sito vetrina statico, senza backend. Deploy su GitHub Pages.
 Sostituisci `<div class="foto-slot">` con `<img src="img/team/cristian.jpg" ...>` (72x72, `object-fit: cover` già gestito dal CSS).
 
 ## Form
-Nessun Netlify. I form puntano a `https://formsubmit.co/claudeuser64@gmail.com`.
+Nessun Netlify. I form puntano a `https://formsubmit.co/cristianbrigandi3@gmail.com`.
 Prima attivazione: arriva email di conferma FormSubmit, cliccare "Activate".
 
 ## Recensioni
