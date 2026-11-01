@@ -1,4 +1,4 @@
-:root{--bg:#fff;--tile:#f5f5f7;--fg:#1d1d1f;--cap:#6e6e73;--line:#d2d2d7;--link:#0066cc;--btn:#0071e3;--glass:rgba(255,255,255,.72);--fill:rgba(0,0,0,.06);
+ :root{--bg:#fff;--tile:#f5f5f7;--fg:#1d1d1f;--cap:#6e6e73;--line:#d2d2d7;--link:#0066cc;--btn:#0071e3;--glass:rgba(255,255,255,.72);--fill:rgba(0,0,0,.06);
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--tile:#1d1d1f;--fg:#f5f5f7;--cap:#a1a1a6;--line:#424245;--link:#2997ff;--glass:rgba(22,22,23,.72);--fill:rgba(255,255,255,.1)}}
 :root[data-theme="dark"]{--bg:#000;--tile:#1d1d1f;--fg:#f5f5f7;--cap:#a1a1a6;--line:#424245;--link:#2997ff;--glass:rgba(22,22,23,.72);--fill:rgba(255,255,255,.1)}
@@ -193,4 +193,4 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--btn);outline-offset:3
 @media(prefers-reduced-motion:reduce){
   .signal article,.stage{transition:none}
   ::view-transition-old(root),::view-transition-new(root){animation:none!important}
-}
+}\n
