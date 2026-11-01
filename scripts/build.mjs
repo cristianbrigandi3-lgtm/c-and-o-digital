@@ -154,6 +154,7 @@ ${robots}<meta name="theme-color" content="#ffffff"><meta name="color-scheme" co
 <meta name="twitter:card" content="summary">${canonical}
 ${page.route === 'home' ? '<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>' : ''}
 <link rel="icon" href="${assetPrefix}favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="${assetPrefix}assets/site.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head><body>
 <a class="skip" href="#main">Vai al contenuto</a>${icons}${pageNav}
 <main id="main">${content}</main>${pageFooter}
@@ -178,3 +179,4 @@ if (prelaunch) {
   await writeFile(path.join(output, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${baseUrl}/sitemap.xml\n`);
 }
 console.log(`Sito generato in ${path.relative(root, output)} (${prelaunch ? 'pre-lancio, non indicizzabile' : 'lancio'}).`);
+
