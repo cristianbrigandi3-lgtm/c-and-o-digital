@@ -1,0 +1,20 @@
+{
+  "name": "c-and-o-web-assistance",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sito pre-lancio C & O Web Assistance; contatti disattivati fino al completamento delle verifiche.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/preview.mjs",
+    "test-mail": "bun test-mail.mjs",
+    "test-mail:node": "node --env-file=.env test-mail.mjs",
+    "test-local": "bun test/send.test.mjs",
+    "test-local:node": "node test/send.test.mjs"
+  },
+  "dependencies": {
+    "nodemailer": "^10.1.7"
+  },
+  "devDependencies": {
+    "smtp-server": "^3.20.2"
+  }
+}
