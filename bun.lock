@@ -1,0 +1,24 @@
+{
+  "lockfileVersion": 2,
+  "configVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "c-and-o-web-assistance",
+      "dependencies": {
+        "nodemailer": "^10.1.7",
+      },
+      "devDependencies": {
+        "smtp-server": "^3.20.2",
+      },
+    },
+  },
+  "packages": {
+    "ipv6-normalize": ["ipv6-normalize@1.0.1", "", {}, "sha512-Bm6H79i01DjgGTCWjUuCjJ6QDo1HB96PT/xCYuyJUP9WFbVDrLSbG4EZCvOCun2rNswZb0c3e4Jt/ws795esHA=="],
+
+    "nodemailer": ["nodemailer@10.1.7", "", {}, "sha512-OQa6FDln5fLttmqSbjDiRYvFDOFNrBqfiOwHPlEbURil3b+vPB1v8xpi+Sp46drzNDlsTnNsS502vthmz56r4w=="],
+
+    "punycode.js": ["punycode.js@2.3.1", "", {}, "sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA=="],
+
+    "smtp-server": ["smtp-server@3.20.2", "", { "dependencies": { "ipv6-normalize": "1.0.1", "nodemailer": "10.1.7", "punycode.js": "2.3.1" } }, "sha512-94VrO5MWy6IJ1RjCEj4bjvIQCpp2z05SBueZ72c8g1ZEoXG/OVbX1RvuZRkO2WqP0AJgC81V1sv6UxQyIN7OHw=="],
+  }
+}
