@@ -92,18 +92,28 @@
   });
 
   const flowCases = {
-    bike: ['Riparazione bicicletta', 'Modulo del sito', 'Misura della ruota', 'Chiedere il dettaglio prima di proporre un orario'],
-    cake: ['Torta per una festa', 'Messaggio Instagram', 'Numero di porzioni', 'Confermare porzioni e data prima di dare disponibilità'],
-    tailor: ['Riparazione di un abito', 'WhatsApp', 'Punto da riparare', 'Chiedere una foto del dettaglio prima di stimare i tempi']
+    craft: {activity:'Riparazione di una caldaia', channel:'Chiamata e foto del modello', missing:'Indirizzo e fascia oraria', next:'Fissare il sopralluogo', state:'Da pianificare', steps:['Richiesta e dettagli del lavoro','Sopralluogo e stima','Intervento e promemoria'], tools:['Contatto','Agenda · Preventivo','Attività · Promemoria']},
+    professional: {activity:'Consulenza per una nuova attività', channel:'Modulo del sito', missing:'Obiettivo e documenti da preparare', next:'Proporre uno slot e inviare la lista preparatoria', state:'Da qualificare', steps:['Contatto e obiettivo','Appuntamento e proposta','Note e seguito'], tools:['CRM','Agenda · Proposte','Archivio · Promemoria']},
+    wellness: {activity:'Prima visita in studio', channel:'Pagina prenotazioni', missing:'Servizio e operatore preferiti', next:'Mostrare disponibilità e confermare la prenotazione', state:'Da confermare', steps:['Richiesta e servizio','Disponibilità e prenotazione','Promemoria e preferenze'], tools:['Profilo pubblico','Agenda · Prenotazioni','Cliente · Promemoria']},
+    hospitality: {activity:'Prenotazione per un gruppo', channel:'QR del locale', missing:'Numero di persone e orario', next:'Verificare il tavolo e confermare', state:'Da confermare', steps:['Richiesta e coperti','Tavolo e conferma','Menu e servizio'], tools:['Menu · QR','Prenotazioni','Sala · Aggiornamenti']}
   };
   const flowButtons = [...document.querySelectorAll('[data-flow]')];
   flowButtons.forEach(button => button.addEventListener('click', () => {
-    const values = flowCases[button.dataset.flow];
-    if (!values) return;
+    const scenario = flowCases[button.dataset.flow];
+    if (!scenario) return;
     ['#flow-activity', '#flow-channel', '#flow-missing', '#flow-next'].forEach((selector, index) => {
       const field = document.querySelector(selector);
-      if (field) field.textContent = values[index];
+      if (field) field.textContent = [scenario.activity, scenario.channel, scenario.missing, scenario.next][index];
     });
+    const flowStatus = document.querySelector('#flow-status');
+    if (flowStatus) flowStatus.textContent = scenario.state;
+    const state = document.querySelector('#thread-state');
+    if (state) state.textContent = scenario.state;
+    ['#thread-one', '#thread-two', '#thread-three'].forEach((selector, index) => {
+      const field = document.querySelector(selector);
+      if (field) field.textContent = scenario.steps[index];
+    });
+    document.querySelectorAll('#thread-steps li>b').forEach((field, index) => { field.textContent = scenario.tools[index]; });
     flowButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
   }));
 

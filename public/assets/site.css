@@ -76,6 +76,19 @@ footer{padding:28px 0 40px;background:var(--paper);color:var(--muted);font-size:
 [data-ui] .flow-detail span,[data-ui] .flow-next span{color:var(--muted)}
 [data-ui] .flow-detail strong,[data-ui] .flow-next strong{font-weight:600}
 [data-ui] .flow-next{display:grid;gap:8px;padding-top:22px;font-size:15px}
+.work-thread{margin-top:30px;padding-top:22px;border-top:1px solid #c8cfcc}
+.thread-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:10px}
+.thread-head>div{display:grid;gap:5px}
+.thread-head>div>span{color:var(--muted);font-size:12px}
+.thread-head strong{font-size:18px;letter-spacing:-.025em}
+.thread-state{padding:5px 9px;background:#dce8e1;color:#244b39;font-size:12px;white-space:nowrap}
+.work-thread ol{list-style:none;margin:0;padding:0}
+.work-thread li{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid #c8cfcc}
+.thread-index{align-self:start;color:#65716c;font-size:12px;font-variant-numeric:tabular-nums}
+.work-thread li>span:nth-child(2){display:grid;gap:3px}
+.work-thread li strong{font-size:14px}.work-thread li small{color:var(--muted);font-size:12px}
+.work-thread li>b{font-size:12px;font-weight:500;text-align:right}
+.thread-note{margin:14px 0 0;color:var(--muted);font-size:12px;line-height:1.45}
 .service-map{padding-top:0}
 .service-map-layout{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1fr);gap:clamp(48px,9vw,140px);align-items:start}
 .service-map-intro h2{max-width:9ch;margin-bottom:24px}
