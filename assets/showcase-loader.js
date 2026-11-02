@@ -9,7 +9,7 @@
     started = true;
     if (hint) hint.textContent = 'Trascina per ruotare · tocca + per i dettagli';
     const three = document.createElement('script');
-    three.src = 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js';
+    three.src = new URL('vendor/three.min.js', loaderUrl).href;
     three.onload = () => {
       const model = document.createElement('script');
       model.src = new URL('showcase.js', loaderUrl).href;
@@ -28,3 +28,4 @@
     observer.observe(stage);
   } else load();
 })();
+

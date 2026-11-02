@@ -4,7 +4,7 @@
   const pages = [...document.querySelectorAll('.page')];
   const routes = pages.map(page => page.dataset.r);
   const reveal = root => {
-    const items = root.querySelectorAll('.card,.cols>div,.tile');
+    const items = root.querySelectorAll('.card,.cols>div,.tile,[data-reveal]');
     if (reducedMotion || !('IntersectionObserver' in window)) {
       items.forEach(item => item.classList.add('in'));
       return;
@@ -41,9 +41,10 @@
     }
   };
   if (pages.length > 1) {
-    const routeFromHash = () => location.hash.replace(/^#\/?/, '') || 'home';
+    const routeFromHash = () => location.hash.startsWith('#/') ? location.hash.slice(2) || 'home' : 'home';
     showRoute(routeFromHash());
     addEventListener('hashchange', () => {
+      if (!location.hash.startsWith('#/')) return;
       const route = routeFromHash();
       if (reducedMotion || typeof document.startViewTransition !== 'function') {
         showRoute(route, true);
@@ -58,40 +59,6 @@
   const updateNav = () => nav?.classList.toggle('s', scrollY > 8);
   addEventListener('scroll', updateNav, { passive: true });
   updateNav();
-
-  const recommendations = {
-    richieste: {
-      title: 'Concept: una coda unica per le richieste',
-      steps: ['Scegli un solo punto di ingresso iniziale.', 'Raccogli soltanto le informazioni necessarie per capire la richiesta.', 'Assegna ogni richiesta a una persona e mostra lo stato del passaggio.'],
-    },
-    copia: {
-      title: 'Concept: elimina un passaggio di copia',
-      steps: ['Individua quale dato viene copiato più spesso.', 'Verifica se i due strumenti possono scambiarsi quel dato in modo sicuro.', 'Automatizza un solo passaggio e mantieni una revisione umana.'],
-    },
-    appuntamenti: {
-      title: 'Concept: regole chiare per gli appuntamenti',
-      steps: ['Rendi visibili disponibilità e regole di prenotazione.', 'Invia una conferma e un promemoria automatici.', 'Prevedi una via semplice per cambiare o annullare.'],
-    },
-    documenti: {
-      title: 'Concept: un archivio con una sola fonte valida',
-      steps: ['Definisci nomi, cartelle e permessi in modo coerente.', 'Raccogli i collegamenti ai documenti usati più spesso.', 'Assegna una persona che verifichi accessi e copie di sicurezza.'],
-    },
-  };
-  const selector = document.querySelector('#friction-select');
-  const run = document.querySelector('#friction-run');
-  run?.addEventListener('click', () => {
-    const plan = recommendations[selector?.value];
-    if (!plan) return;
-    const output = document.querySelector('#friction-output');
-    document.querySelector('#friction-heading').textContent = plan.title;
-    const steps = document.querySelector('#friction-steps');
-    steps.replaceChildren(...plan.steps.map(text => {
-      const item = document.createElement('li');
-      item.textContent = text;
-      return item;
-    }));
-    output.hidden = false;
-  });
 
   document.querySelectorAll('[data-svc]').forEach(link => {
     link.addEventListener('click', () => {
@@ -139,3 +106,4 @@
     }
   });
 })();
+

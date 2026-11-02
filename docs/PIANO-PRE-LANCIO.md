@@ -40,8 +40,9 @@ La demo **“Frizione → Flusso”** sul sito è un primo prototipo: porta chi 
 - [ ] Definire identità del prestatore, sede, recapito, iscrizioni e dati fiscali applicabili e pubblicarli nel footer.
 - [ ] Preparare preventivo, contratto, termini, proprietà intellettuale, licenze, manutenzione, garanzie, pagamenti, cancellazioni e recesso, in base ai clienti e al servizio.
 - [ ] Mappare dati del modulo e dei provider, ruoli privacy, basi giuridiche, informative, accordi con responsabili, regioni, trasferimenti, tempi di cancellazione e procedura per le richieste degli interessati.
-- [ ] Verificare cookie/strumenti esterni. La preview carica Three.js da jsDelivr: valutare un asset locale prima del lancio e aggiornare la documentazione in base alla soluzione reale.
+- [ ] Verificare cookie e strumenti esterni prima del lancio. Three.js è distribuito localmente e non contatta un CDN; verificare i log dell’hosting e aggiornare l’informativa se cambiano gli strumenti.
 - [ ] Lasciare il modulo spento finché hosting, email, antispam Redis persistente, origine HTTPS, segreti e destinatari sono stati configurati e verificati.
 - [ ] Verificare accessibilità applicabile, tastiera, screen reader, zoom, contrasto e moduli; decidere il livello di conformità richiesto in base al mercato effettivo.
 - [ ] Attivare dominio HTTPS, title/description finali, canonical, OG image, sitemap, robots pubblici e scheda attività solo con informazioni vere.
 - [ ] Sostituire ogni concept con lavori autorizzati e misurabili prima di mostrare clienti, recensioni o risultati.
+

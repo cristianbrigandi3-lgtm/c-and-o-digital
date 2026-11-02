@@ -7,3 +7,4 @@ module.exports = async (req, res) => {
   for (const [name, value] of Object.entries(response.headers)) res.setHeader(name, value);
   return res.status(response.statusCode).send(response.body);
 };
+

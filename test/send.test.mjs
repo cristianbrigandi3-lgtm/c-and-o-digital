@@ -110,3 +110,4 @@ redis.close();
 console.log(results.join('\n'));
 console.log(results.some((l) => l.startsWith('FAIL')) ? '\nTest falliti.' : '\nTutti i test passati.');
 process.exit(results.some((l) => l.startsWith('FAIL')) ? 1 : 0);
+

@@ -9,3 +9,4 @@ exports.handler = async (event) => {
   const response = await handleContact({ method: event.httpMethod, headers: event.headers, body, ip });
   return { ...response, isBase64Encoded: false };
 };
+

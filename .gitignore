@@ -5,3 +5,6 @@ node_modules/
 .vercel
 .netlify
 .DS_Store
+.taste-skill/npm-cache/
+.taste-skill/vendor-cache/
+

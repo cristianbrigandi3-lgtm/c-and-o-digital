@@ -10,28 +10,30 @@ const CFG={tilt:.14,        // inclinazione massima col mouse (rad)
   dpr:2};                   // tetto del pixel ratio
 const $=s=>document.querySelector(s),stage=$('#stage'),cv=$('#c3d'),hint=$('#hint'),cap=$('#cap'),hs=[...stage.querySelectorAll('.hs')];
 const RM=matchMedia('(prefers-reduced-motion: reduce)'),W=1480,H=930,Z=Math.PI;
-const INFO=[['Design su misura','Ogni pagina è disegnata sul tuo marchio: tipografia, spazi e colori coerenti, senza template riciclati.'],['Pensato per farti contattare','Ogni pagina ha un obiettivo chiaro: portare il cliente a scriverti, senza distrazioni.'],['Tutto in un unico posto','Sito, bot e automazioni lavorano insieme: meno lavoro manuale per te.']];
+const INFO=[['Schermata concept','Questa schermata è un prototipo visuale dell’identità e del percorso di un possibile sito C & O.'],['Passaggio leggibile','La demo esplora come una richiesta potrebbe diventare un’attività chiara, con una persona responsabile.'],['Strumenti da verificare','Siti, automazioni e piccoli strumenti sono direzioni in valutazione, non servizi acquistabili oggi.']];
 const HP=[[740,340],[372,560],[900,730]];
 function drawScreen(){
   const c=document.createElement('canvas');c.width=W;c.height=H;const g=c.getContext('2d');
   const rr=(x,y,w,h,r)=>{g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+h,r);g.arcTo(x+w,y+h,x,y+h,r);g.arcTo(x,y+h,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath()};
   const F='-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",system-ui,sans-serif';
   rr(0,0,W,H,70);g.clip();
-  const bg=g.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#18181b');bg.addColorStop(1,'#0a0a0c');g.fillStyle=bg;g.fillRect(0,0,W,H);
+  g.fillStyle='#101719';g.fillRect(0,0,W,H);
   g.fillStyle='#3a3a3f';[70,106,142].forEach(x=>{g.beginPath();g.arc(x,70,10,0,7);g.fill()});
   g.font='500 28px '+F;g.fillStyle='#8e8e93';g.textAlign='right';g.fillText('Servizi      Chi siamo      Contatti',W-110,80);
   g.textAlign='left';g.fillStyle='#f5f5f7';g.font='600 96px '+F;try{g.letterSpacing='-3px'}catch(e){}
-  g.fillText('Siti web che',110,300);g.fillText('portano clienti.',110,410);
+  g.fillText('Il digitale',110,300);g.fillText('senza attrito.',110,410);
   try{g.letterSpacing='0px'}catch(e){}
-  g.font='400 34px '+F;g.fillStyle='#a1a1a6';g.fillText('Bot, automazioni e strumenti su misura.',110,480);
-  rr(110,520,260,80,40);g.fillStyle='#0a84ff';g.fill();g.fillStyle='#fff';g.font='500 32px '+F;g.textAlign='center';g.fillStyle='#fff';g.fillText('Preventivo',240,572);g.textAlign='left';
-  ['Siti ed e-commerce','Bot Telegram','Automazioni'].forEach((t,i)=>{const x=110+i*430;rr(x,690,400,170,36);g.fillStyle='#1c1c1e';g.fill();g.fillStyle='#f5f5f7';g.font='600 34px '+F;g.fillText(t,x+36,780);rr(x+36,806,150,14,7);g.fillStyle='#2c2c2e';g.fill()});
+  g.font='400 34px '+F;g.fillStyle='#bdc8c4';g.fillText('Concept digitale per piccole attività.',110,480);
+  rr(110,520,310,80,6);g.fillStyle='#b8d4c9';g.fill();g.fillStyle='#080d10';g.font='500 30px '+F;g.textAlign='center';g.fillText('Esplora il concept',265,572);g.textAlign='left';
+  ['Siti e contenuti','Passaggi di lavoro','Strumenti digitali'].forEach((t,i)=>{const x=110+i*430;rr(x,690,400,170,10);g.fillStyle='#1b2527';g.fill();g.fillStyle='#f5f5f7';g.font='600 34px '+F;g.fillText(t,x+36,780);rr(x+36,806,150,14,7);g.fillStyle='#344447';g.fill()});
   return c}
 function fallback(){cv.remove();hs.forEach(b=>b.remove());hint.remove();const c=drawScreen();c.className='fb';c.setAttribute('role','img');c.setAttribute('aria-label','Anteprima di un sito C & O');stage.prepend(c)}
 if(typeof THREE==='undefined'){fallback();return}
 let ren;try{ren=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true,powerPreference:'high-performance'})}catch(e){fallback();return}
 const low=(navigator.hardwareConcurrency||8)<=2||(navigator.deviceMemory||8)<=2;
 ren.setPixelRatio(low?1:Math.min(devicePixelRatio,CFG.dpr));ren.toneMapping=THREE.ACESFilmicToneMapping;ren.toneMappingExposure=1.05;
+const setSRGB=texture=>{if(THREE.SRGBColorSpace&&'colorSpace'in texture)texture.colorSpace=THREE.SRGBColorSpace;else if(THREE.sRGBEncoding)texture.encoding=THREE.sRGBEncoding;return texture};
+if('outputColorSpace'in ren&&THREE.SRGBColorSpace)ren.outputColorSpace=THREE.SRGBColorSpace;else if('outputEncoding'in ren&&THREE.sRGBEncoding)ren.outputEncoding=THREE.sRGBEncoding;
 
 // ── Scena: studio lighting con softbox (environment map procedurale) ──
 const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(30,1,.1,60);
@@ -42,16 +44,16 @@ const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(30,1,.1,60);
 
 const rshape=(w,h,r)=>{const s=new THREE.Shape(),x=-w/2,y=-h/2;s.moveTo(x+r,y);s.lineTo(x+w-r,y);s.absarc(x+w-r,y+r,r,-Z/2,0);s.lineTo(x+w,y+h-r);s.absarc(x+w-r,y+h-r,r,0,Z/2);s.lineTo(x+r,y+h);s.absarc(x+r,y+h-r,r,Z/2,Z);s.lineTo(x,y+r);s.absarc(x+r,y+r,r,Z,1.5*Z);return s};
 const slab=(w,h,r,d,b)=>{const g=new THREE.ExtrudeGeometry(rshape(w,h,r),{depth:d,bevelEnabled:true,bevelThickness:b,bevelSize:b,bevelSegments:6,curveSegments:32});g.center();return g};
-const rig=new THREE.Group(),grp=new THREE.Group();rig.add(grp);scene.add(rig);
+const rig=new THREE.Group(),grp=new THREE.Group();grp.scale.setScalar(1.15);rig.add(grp);scene.add(rig);
 
 // Display in alluminio con schermo
 const alu=new THREE.MeshStandardMaterial({color:0xd9dadf,metalness:1,roughness:.34});
 const body=new THREE.Mesh(slab(3.2,2.1,.2,.1,.035),alu);grp.add(body);
 body.geometry.computeBoundingBox();const zf=body.geometry.boundingBox.max.z;
-const tex=new THREE.CanvasTexture(drawScreen());tex.colorSpace=THREE.SRGBColorSpace;tex.anisotropy=8;
+const tex=setSRGB(new THREE.CanvasTexture(drawScreen()));tex.anisotropy=8;
 const scr=new THREE.Mesh(new THREE.PlaneGeometry(2.96,1.86),new THREE.MeshBasicMaterial({map:tex,transparent:true,toneMapped:false}));scr.position.z=zf+.002;grp.add(scr);
 {const bc=document.createElement('canvas');bc.width=512;bc.height=256;const b=bc.getContext('2d');b.font='600 120px -apple-system,"SF Pro Display",system-ui,sans-serif';b.textAlign='center';b.textBaseline='middle';b.fillStyle='rgba(70,70,76,.6)';b.fillText('C & O',256,128);
- const t=new THREE.CanvasTexture(bc);t.colorSpace=THREE.SRGBColorSpace;const m=new THREE.Mesh(new THREE.PlaneGeometry(1.2,.6),new THREE.MeshBasicMaterial({map:t,transparent:true,toneMapped:false}));m.rotation.y=Z;m.position.z=-zf-.002;grp.add(m)}
+ const t=setSRGB(new THREE.CanvasTexture(bc));const m=new THREE.Mesh(new THREE.PlaneGeometry(1.2,.6),new THREE.MeshBasicMaterial({map:t,transparent:true,toneMapped:false}));m.rotation.y=Z;m.position.z=-zf-.002;grp.add(m)}
 
 // Vetro smerigliato = il bot (rifrange e sfoca ciò che ha dietro)
 const glassMat=low?new THREE.MeshStandardMaterial({color:0xffffff,transparent:true,opacity:.35,roughness:.3}):new THREE.MeshPhysicalMaterial({color:0xffffff,transmission:1,roughness:.32,thickness:.7,ior:1.45,clearcoat:1,clearcoatRoughness:.2,attenuationColor:new THREE.Color(0xdfe9ff),attenuationDistance:2});
@@ -68,8 +70,8 @@ const hp=HP.map(([x,y])=>new THREE.Vector3((x/W-.5)*2.96,(.5-y/H)*1.86,zf+.01));
 
 // ── Stato, loop on-demand, render ──
 const s={tx:0,ty:0,zoom:0,fx:0,fy:0,yaw:0},t={tx:0,ty:0,zoom:0,fx:0,fy:0};
-let z0=8.6,active=-1,vis=false,raf=0,last=0,w=0,h=0;
-function size(){w=stage.clientWidth;h=stage.clientHeight;if(!w||!h)return;ren.setSize(w,h,false);cam.aspect=w/h;z0=8.6/Math.min(1,cam.aspect);cam.updateProjectionMatrix();need()}
+let z0=7.6,active=-1,vis=false,raf=0,last=0,w=0,h=0;
+function size(){w=stage.clientWidth;h=stage.clientHeight;if(!w||!h)return;grp.scale.setScalar(w<460?1.05:1.15);ren.setSize(w,h,false);cam.aspect=w/h;z0=7.6/Math.min(1,cam.aspect);cam.updateProjectionMatrix();need()}
 function render(now){
   const r=stage.getBoundingClientRect(),p=RM.matches?.5:Math.max(0,Math.min(1,(innerHeight-r.top)/(innerHeight+r.height))),f=RM.matches?0:Math.sin(now/1400);
   rig.position.y=f*.06+(.5-p)*.5;rig.rotation.x=s.ty+(p-.5)*.3;rig.rotation.y=s.tx+(p-.5)*CFG.scroll;grp.rotation.y=s.yaw;
@@ -130,3 +132,4 @@ hs.forEach((b,i)=>{
 });
 $('#capx').onclick=close;addEventListener('keydown',e=>{if(e.key==='Escape')close()});
 })();
+

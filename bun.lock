@@ -22,3 +22,4 @@
     "smtp-server": ["smtp-server@3.20.2", "", { "dependencies": { "ipv6-normalize": "1.0.1", "nodemailer": "10.1.7", "punycode.js": "2.3.1" } }, "sha512-94VrO5MWy6IJ1RjCEj4bjvIQCpp2z05SBueZ72c8g1ZEoXG/OVbX1RvuZRkO2WqP0AJgC81V1sv6UxQyIN7OHw=="],
   }
 }
+

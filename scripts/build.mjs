@@ -15,12 +15,12 @@ const prelaunch = process.env.SITE_PRELAUNCH !== 'false';
 const baseUrl = (process.env.SITE_URL || '').replace(/\/$/, '');
 
 const pages = [
-  { route: 'home', dir: '', title: 'C & O — Strumenti digitali per piccole imprese', description: 'Un progetto in preparazione: siti, strumenti e automazioni pensati per ridurre l’attrito nel lavoro quotidiano delle piccole imprese.' },
-  { route: 'servizi', dir: 'servizi', title: 'Concept digitali per piccole imprese — C & O', description: 'I concept C & O in preparazione: siti web, automazioni, bot e strumenti digitali su misura per piccole attività.' },
+  { route: 'home', dir: '', title: 'C & O | Strumenti digitali per piccole imprese', description: 'Un progetto in preparazione: siti, strumenti e automazioni pensati per ridurre l’attrito nel lavoro quotidiano delle piccole imprese.' },
+  { route: 'servizi', dir: 'servizi', title: 'Concept digitali per piccole imprese | C & O', description: 'I concept C & O in preparazione: siti web, automazioni, bot e strumenti digitali su misura per piccole attività.' },
   { route: 'chi-siamo', dir: 'chi-siamo', title: 'Il progetto C & O', description: 'La direzione, il metodo e le persone che stanno preparando C & O Web Assistance.' },
-  { route: 'contatti', dir: 'contatti', title: 'Stato del progetto — C & O', description: 'C & O è in preparazione e per ora non raccoglie richieste né dati di contatto.' },
-  { route: 'privacy', dir: 'privacy', title: 'Informativa privacy — bozza C & O', description: 'Bozza privacy non pubblicabile del progetto C & O Web Assistance.' },
-  { route: 'termini', dir: 'termini', title: 'Condizioni — bozza C & O', description: 'Informazioni sullo stato pre-lancio e sulla futura attivazione dei servizi C & O.' },
+  { route: 'contatti', dir: 'contatti', title: 'Stato del progetto | C & O', description: 'C & O è in preparazione e per ora non raccoglie richieste né dati di contatto.' },
+  { route: 'privacy', dir: 'privacy', title: 'Informativa privacy | bozza C & O', description: 'Bozza privacy non pubblicabile del progetto C & O Web Assistance.' },
+  { route: 'termini', dir: 'termini', title: 'Condizioni | bozza C & O', description: 'Informazioni sullo stato pre-lancio e sulla futura attivazione dei servizi C & O.' },
 ];
 
 function extractPageBlocks(html) {
@@ -107,7 +107,7 @@ const identity = prelaunch
   ? '<span id="launch-identity">© 2026 C &amp; O · Progetto in preparazione · nessun servizio attivo</span>'
   : `<span id="launch-identity">© ${new Date().getFullYear()} C &amp; O · ${escapeHtml(process.env.LEGAL_NAME)} · ${escapeHtml(process.env.LEGAL_ADDRESS)} · ${escapeHtml(process.env.LEGAL_TAX_ID)} · ${escapeHtml(process.env.LEGAL_VAT_OR_REASON)} · ${escapeHtml(process.env.LEGAL_REGISTER_OR_REASON)} · <a href="mailto:${escapeHtml(process.env.CONTACT_EMAIL)}">${escapeHtml(process.env.CONTACT_EMAIL)}</a></span>`;
 
-const contactPreview = `<header class="page-h"><div class="wrap"><h1 tabindex="-1">Il progetto è in preparazione.</h1><p class="lead">Non raccogliamo richieste e non offriamo servizi. Questa pagina è una preview, non un canale commerciale attivo.</p></div></header><section class="contact-preview" aria-labelledby="contact-preview-title"><div class="wrap"><div class="prelaunch-panel"><span class="eyebrow">Stato: in preparazione</span><h2 id="contact-preview-title">Nessun dato viene raccolto.</h2><p>Il modulo sarà attivato solo dopo la verifica dei documenti, dei fornitori e delle protezioni necessarie. Questa preview non accetta incarichi o pagamenti.</p><a class="more" href="/servizi/">Esplora i concept</a></div></div></section>`;
+const contactPreview = `<header class="page-h"><div class="wrap"><h1 tabindex="-1">Il progetto è in preparazione.</h1><p class="lead">Non raccogliamo richieste e non offriamo servizi. Questa pagina è una preview, non un canale commerciale attivo.</p></div></header><section class="contact-preview" aria-labelledby="contact-preview-title"><div class="wrap"><div class="prelaunch-panel"><h2 id="contact-preview-title">Nessun dato viene raccolto.</h2><p>La pagina mostra lo stato del progetto. Contatti e servizi saranno valutati dopo le verifiche necessarie, prima di un eventuale lancio.</p><a class="more" href="/servizi/">Concept in preparazione</a></div></div></section>`;
 
 await rm(output, { recursive: true, force: true });
 await mkdir(path.join(output, 'assets'), { recursive: true });
@@ -149,12 +149,10 @@ for (const page of pages) {
 <html lang="it"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${page.title}</title><meta name="description" content="${page.description}">
-${robots}<meta name="theme-color" content="#ffffff"><meta name="color-scheme" content="light dark">
+${robots}<meta name="theme-color" content="#ffffff"><meta name="color-scheme" content="light">
 <meta property="og:type" content="website"><meta property="og:locale" content="it_IT"><meta property="og:title" content="${page.title}"><meta property="og:description" content="${page.description}">
 <meta name="twitter:card" content="summary">${canonical}
-${page.route === 'home' ? '<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>' : ''}
 <link rel="icon" href="${assetPrefix}favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="${assetPrefix}assets/site.css">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head><body>
 <a class="skip" href="#main">Vai al contenuto</a>${icons}${pageNav}
 <main id="main">${content}</main>${pageFooter}
@@ -167,6 +165,10 @@ ${page.route === 'home' ? '<script src="https://cdn.jsdelivr.net/npm/three@0.160
 
 for (const [name, data] of [['site.css', css], ['site.js', siteJs], ['showcase-loader.js', loaderJs], ['showcase.js', threeScene]]) {
   await writeFile(path.join(output, 'assets', name), data, 'utf8');
+}
+await mkdir(path.join(output, 'assets', 'vendor'), { recursive: true });
+for (const asset of ['three.min.js', 'THREE-LICENSE.txt', 'bricolage-grotesque-latin-wght-normal.woff2', 'bricolage-grotesque-latin-ext-wght-normal.woff2', 'BRICOLAGE-LICENSE.txt']) {
+  await copyFile(path.join(root, 'assets', 'vendor', asset), path.join(output, 'assets', 'vendor', asset));
 }
 await writeFile(path.join(output, 'favicon.svg'), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="18" fill="#1d1d1f"/><text x="32" y="40" fill="#fff" font-family="Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle">C&amp;O</text></svg>\n');
 

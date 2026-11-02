@@ -8,7 +8,8 @@ La direzione commerciale ipotizzata, le offerte da validare e il percorso pre-la
 
 - `index.html` — sorgente delle sezioni e dei testi.
 - `assets/site.css`, `assets/site.js` — stile e interazioni condivise.
-- `assets/showcase.js` — modello 3D originale; Three.js 0.160.0 è caricato in modo differito da jsDelivr.
+- `assets/showcase.js` — modello 3D originale; Three.js 0.149.0 è incluso localmente e caricato solo vicino alla scena.
+- `assets/vendor/` — Three.js, Bricolage Grotesque variabile e relative licenze. I file vengono pubblicati insieme agli asset, senza CDN.
 - `scripts/build.mjs` — genera le sei pagine statiche nella cartella `public/`.
 - `api/send.js` e `netlify/functions/send.js` — adattatori per Vercel e Netlify; condividono la logica in `lib/`.
 - `public/` — sola cartella da pubblicare. Viene rigenerata; non contiene i sorgenti del backend, i test o i documenti interni.
@@ -26,7 +27,7 @@ La build predefinita è volutamente prudente:
 
 Genera la preview con npm run build oppure node scripts/build.mjs. Netlify e Vercel usano lo stesso script, la stessa cartella di output e la stessa URL pubblica /api/send. Il progetto non è pubblicato da questo comando. Per visualizzarla come sul sito pubblicato, avvia npm run preview dopo la build e apri http://127.0.0.1:4173: il server locale serve esclusivamente public.
 
-Il modello 3D conserva la versione già presente nel sito e carica la libreria solo quando la scena si avvicina allo schermo. Il caricamento usa un file Three.js versionato su jsDelivr: il browser contatta quindi un fornitore esterno. Prima del lancio va verificata la documentazione privacy del CDN e decisa, se possibile, la distribuzione locale del file. La connessione di questo ambiente non ha consentito di scaricare in sicurezza il pacchetto, quindi la dipendenza non è stata copiata localmente.
+Il modello 3D conserva la scena originale e carica la libreria solo quando la scena si avvicina allo schermo. Three.js è distribuito in `assets/vendor/three.min.js`; la versione e la licenza MIT sono conservate insieme al codice. La preview non deve effettuare richieste a un CDN per mostrare la scena.
 
 ## Protezioni del modulo, da attivare solo al lancio
 
@@ -48,7 +49,7 @@ Leggi [`docs/PIANO-PRE-LANCIO.md`](docs/PIANO-PRE-LANCIO.md) e completa ogni cam
 
 Lo script blocca la build di lancio se mancano variabili, se l’URL non è HTTPS, se il titolare non ha dichiarato verificate privacy e condizioni, se restano segnaposto o testi di pre-lancio. Il flag di approvazione non sostituisce una verifica reale.
 
-Il sito non installa strumenti di analytics o marketing intenzionali e non mostra banner cookie nella preview. Il caricamento del CDN e i log dei provider restano da documentare. Se in futuro si aggiungono analytics, pixel, incorporamenti, chat o cookie non tecnici, aggiornare la valutazione privacy e la gestione del consenso prima di attivarli.
+Il sito non installa strumenti di analytics o marketing intenzionali e non mostra banner cookie nella preview. L’hosting può comunque registrare dati tecnici nei propri log. Se in futuro si aggiungono analytics, pixel, incorporamenti, chat o cookie non tecnici, aggiornare la valutazione privacy e la gestione del consenso prima di attivarli.
 
 ## Riferimenti per la checklist
 
@@ -58,3 +59,4 @@ Il sito non installa strumenti di analytics o marketing intenzionali e non mostr
 - [AgID — linee guida sull’accessibilità dei servizi](https://www.agid.gov.it/it/notizie/european-accessibility-act-eaa-pubblicate-le-linee-guida-agid-sullaccessibilita-dei-servizi): verificare l’ambito di applicazione in base a servizi, clienti e forma d’impresa prima del lancio.
 
 Questa guida non costituisce consulenza legale o fiscale. Forma dell’attività, capacità di firmare contratti, fiscalità, privacy, e-commerce e accessibilità devono essere verificati con professionisti quando il lancio sarà concreto.
+
