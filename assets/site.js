@@ -3,6 +3,19 @@
   const nav = document.querySelector('#nav');
   const pages = [...document.querySelectorAll('.page')];
   const routes = pages.map(page => page.dataset.r);
+  const serviceLinks = [...document.querySelectorAll('.service-jump a')];
+  const serviceTargets = serviceLinks.map(link => document.querySelector(link.hash)).filter(Boolean);
+  if ('IntersectionObserver' in window && serviceTargets.length) {
+    const serviceObserver = new IntersectionObserver(entries => {
+      const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+      if (!visible) return;
+      serviceLinks.forEach(link => {
+        if (link.hash === `#${visible.target.id}`) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    }, { rootMargin: '-18% 0px -68% 0px', threshold: 0 });
+    serviceTargets.forEach(target => serviceObserver.observe(target));
+  }
   const reveal = root => {
     const items = root.querySelectorAll('.card,.cols>div,.tile,[data-reveal]');
     if (reducedMotion || !('IntersectionObserver' in window)) {
@@ -122,3 +135,4 @@
     }
   });
 })();
+
