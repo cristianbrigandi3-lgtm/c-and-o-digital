@@ -68,6 +68,22 @@
     }, { once: true });
   });
 
+  const flowCases = {
+    bike: ['Riparazione bicicletta', 'Modulo del sito', 'Misura della ruota', 'Chiedere il dettaglio prima di proporre un orario'],
+    cake: ['Torta per una festa', 'Messaggio Instagram', 'Numero di porzioni', 'Confermare porzioni e data prima di dare disponibilità'],
+    tailor: ['Riparazione di un abito', 'WhatsApp', 'Punto da riparare', 'Chiedere una foto del dettaglio prima di stimare i tempi']
+  };
+  const flowButtons = [...document.querySelectorAll('[data-flow]')];
+  flowButtons.forEach(button => button.addEventListener('click', () => {
+    const values = flowCases[button.dataset.flow];
+    if (!values) return;
+    ['#flow-activity', '#flow-channel', '#flow-missing', '#flow-next'].forEach((selector, index) => {
+      const field = document.querySelector(selector);
+      if (field) field.textContent = values[index];
+    });
+    flowButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+  }));
+
   const form = document.querySelector('#f');
   if (!form) return;
   const service = new URLSearchParams(location.search).get('servizio');
@@ -106,4 +122,3 @@
     }
   });
 })();
-

@@ -17,7 +17,7 @@
       document.head.append(model);
     };
     three.onerror = () => {
-      if (hint) hint.textContent = 'Il modello richiede una connessione a internet per caricare Three.js.';
+      if (hint) hint.textContent = 'Il modello 3D non è disponibile in questa anteprima.';
     };
     document.head.append(three);
   };
@@ -28,4 +28,3 @@
     observer.observe(stage);
   } else load();
 })();
-
