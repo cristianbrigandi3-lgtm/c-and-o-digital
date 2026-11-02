@@ -48,14 +48,24 @@
       document.title = current.dataset.t || document.title;
       reveal(current);
       if (moveFocus) {
-        window.scrollTo(0, 0);
         current.querySelector('h1')?.focus({ preventScroll: true });
       }
+      const nestedAnchor = location.hash.startsWith('#/') ? location.hash.slice(2).split('/').slice(1).join('/') : '';
+      const anchorTarget = nestedAnchor ? current.querySelector(`#${CSS.escape(nestedAnchor)}`) : null;
+      if (anchorTarget) requestAnimationFrame(() => anchorTarget.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' }));
+      else if (moveFocus) window.scrollTo(0, 0);
     }
   };
   if (pages.length > 1) {
-    const routeFromHash = () => location.hash.startsWith('#/') ? location.hash.slice(2) || 'home' : 'home';
+    const routeFromHash = () => location.hash.startsWith('#/') ? location.hash.slice(2).split('/')[0] || 'home' : 'home';
     showRoute(routeFromHash());
+    serviceLinks.forEach(link => link.addEventListener('click', event => {
+      const target = document.querySelector(link.hash);
+      if (!target) return;
+      event.preventDefault();
+      history.replaceState(null, '', `#/servizi/${target.id}`);
+      target.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+    }));
     addEventListener('hashchange', () => {
       if (!location.hash.startsWith('#/')) return;
       const route = routeFromHash();
@@ -135,4 +145,3 @@
     }
   });
 })();
-

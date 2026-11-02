@@ -26,7 +26,7 @@ function drawScreen(){
   rr(110,520,310,80,6);g.fillStyle='#b8d4c9';g.fill();g.fillStyle='#080d10';g.font='500 30px '+F;g.textAlign='center';g.fillText('Esplora il concept',265,572);g.textAlign='left';
   ['Siti e contenuti','Passaggi di lavoro','Strumenti digitali'].forEach((t,i)=>{const x=110+i*430;rr(x,690,400,170,10);g.fillStyle='#1b2527';g.fill();g.fillStyle='#f5f5f7';g.font='600 34px '+F;g.fillText(t,x+36,780);rr(x+36,806,150,14,7);g.fillStyle='#344447';g.fill()});
   return c}
-function fallback(){cv.remove();hs.forEach(b=>b.remove());hint.remove();const c=drawScreen();c.className='fb';c.setAttribute('role','img');c.setAttribute('aria-label','Anteprima di un sito C & O');stage.prepend(c)}
+function fallback(){cv.remove();hs.forEach(b=>b.remove());hint.remove();stage.classList.add('is-static');const c=drawScreen();c.className='fb';c.setAttribute('role','img');c.setAttribute('aria-label','Anteprima statica del concept C & O');stage.prepend(c)}
 if(typeof THREE==='undefined'){fallback();return}
 let ren;try{ren=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true,powerPreference:'high-performance'})}catch(e){fallback();return}
 const low=(navigator.hardwareConcurrency||8)<=2||(navigator.deviceMemory||8)<=2;

@@ -3,6 +3,19 @@
   const nav = document.querySelector('#nav');
   const pages = [...document.querySelectorAll('.page')];
   const routes = pages.map(page => page.dataset.r);
+  const serviceLinks = [...document.querySelectorAll('.service-jump a')];
+  const serviceTargets = serviceLinks.map(link => document.querySelector(link.hash)).filter(Boolean);
+  if ('IntersectionObserver' in window && serviceTargets.length) {
+    const serviceObserver = new IntersectionObserver(entries => {
+      const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+      if (!visible) return;
+      serviceLinks.forEach(link => {
+        if (link.hash === `#${visible.target.id}`) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    }, { rootMargin: '-18% 0px -68% 0px', threshold: 0 });
+    serviceTargets.forEach(target => serviceObserver.observe(target));
+  }
   const reveal = root => {
     const items = root.querySelectorAll('.card,.cols>div,.tile,[data-reveal]');
     if (reducedMotion || !('IntersectionObserver' in window)) {
@@ -35,14 +48,24 @@
       document.title = current.dataset.t || document.title;
       reveal(current);
       if (moveFocus) {
-        window.scrollTo(0, 0);
         current.querySelector('h1')?.focus({ preventScroll: true });
       }
+      const nestedAnchor = location.hash.startsWith('#/') ? location.hash.slice(2).split('/').slice(1).join('/') : '';
+      const anchorTarget = nestedAnchor ? current.querySelector(`#${CSS.escape(nestedAnchor)}`) : null;
+      if (anchorTarget) requestAnimationFrame(() => anchorTarget.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' }));
+      else if (moveFocus) window.scrollTo(0, 0);
     }
   };
   if (pages.length > 1) {
-    const routeFromHash = () => location.hash.startsWith('#/') ? location.hash.slice(2) || 'home' : 'home';
+    const routeFromHash = () => location.hash.startsWith('#/') ? location.hash.slice(2).split('/')[0] || 'home' : 'home';
     showRoute(routeFromHash());
+    serviceLinks.forEach(link => link.addEventListener('click', event => {
+      const target = document.querySelector(link.hash);
+      if (!target) return;
+      event.preventDefault();
+      history.replaceState(null, '', `#/servizi/${target.id}`);
+      target.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+    }));
     addEventListener('hashchange', () => {
       if (!location.hash.startsWith('#/')) return;
       const route = routeFromHash();

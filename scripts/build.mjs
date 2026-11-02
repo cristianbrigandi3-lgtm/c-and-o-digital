@@ -16,7 +16,7 @@ const baseUrl = (process.env.SITE_URL || '').replace(/\/$/, '');
 
 const pages = [
   { route: 'home', dir: '', title: 'C & O | Strumenti digitali per piccole imprese', description: 'Un progetto in preparazione: siti, strumenti e automazioni pensati per ridurre l’attrito nel lavoro quotidiano delle piccole imprese.' },
-  { route: 'servizi', dir: 'servizi', title: 'Concept digitali per piccole imprese | C & O', description: 'I concept C & O in preparazione: siti web, automazioni, bot e strumenti digitali su misura per piccole attività.' },
+  { route: 'servizi', dir: 'servizi', title: 'Concept digitali per piccole imprese | C & O', description: 'Siti, flussi operativi e piccoli strumenti: le ipotesi C & O per le piccole attività, con criteri di privacy e sicurezza in preparazione.' },
   { route: 'chi-siamo', dir: 'chi-siamo', title: 'Il progetto C & O', description: 'La direzione, il metodo e le persone che stanno preparando C & O Web Assistance.' },
   { route: 'contatti', dir: 'contatti', title: 'Stato del progetto | C & O', description: 'C & O è in preparazione e per ora non raccoglie richieste né dati di contatto.' },
   { route: 'privacy', dir: 'privacy', title: 'Informativa privacy | bozza C & O', description: 'Bozza privacy non pubblicabile del progetto C & O Web Assistance.' },
@@ -104,7 +104,7 @@ if (!prelaunch) {
 }
 
 const identity = prelaunch
-  ? '<span id="launch-identity">© 2026 C &amp; O · Progetto in preparazione · nessun servizio attivo</span>'
+  ? '<span id="launch-identity">© 2026 C &amp; O · Progetto in preparazione</span>'
   : `<span id="launch-identity">© ${new Date().getFullYear()} C &amp; O · ${escapeHtml(process.env.LEGAL_NAME)} · ${escapeHtml(process.env.LEGAL_ADDRESS)} · ${escapeHtml(process.env.LEGAL_TAX_ID)} · ${escapeHtml(process.env.LEGAL_VAT_OR_REASON)} · ${escapeHtml(process.env.LEGAL_REGISTER_OR_REASON)} · <a href="mailto:${escapeHtml(process.env.CONTACT_EMAIL)}">${escapeHtml(process.env.CONTACT_EMAIL)}</a></span>`;
 
 const contactPreview = `<header class="page-h"><div class="wrap"><h1 tabindex="-1">Il progetto è in preparazione.</h1><p class="lead">Non raccogliamo richieste e non offriamo servizi. Questa pagina è una preview, non un canale commerciale attivo.</p></div></header><section class="contact-preview" aria-labelledby="contact-preview-title"><div class="wrap"><div class="prelaunch-panel"><h2 id="contact-preview-title">Nessun dato viene raccolto.</h2><p>La pagina mostra lo stato del progetto. Contatti e servizi saranno valutati dopo le verifiche necessarie, prima di un eventuale lancio.</p><a class="more" href="/servizi/">Concept in preparazione</a></div></div></section>`;
@@ -143,6 +143,7 @@ for (const page of pages) {
     .replace(`href="${pagePrefix}privacy/"`, `href="${pagePrefix}privacy/"${page.route === 'privacy' ? ' aria-current="page"' : ''}`)
     .replace(`href="${pagePrefix}termini/"`, `href="${pagePrefix}termini/"${page.route === 'termini' ? ' aria-current="page"' : ''}`);
   const assetPrefix = page.route === 'home' ? './' : '../';
+  content = content.replaceAll('src="assets/images/', `src="${assetPrefix}assets/images/`);
   const canonical = !prelaunch && baseUrl ? `<link rel="canonical" href="${baseUrl}${page.route === 'home' ? '/' : `/${page.dir}/`}">` : '';
   const robots = prelaunch ? '<meta name="robots" content="noindex,nofollow">' : '<meta name="robots" content="index,follow,max-image-preview:large">';
   const html = `<!doctype html>
@@ -170,6 +171,13 @@ await mkdir(path.join(output, 'assets', 'vendor'), { recursive: true });
 for (const asset of ['three.min.js', 'THREE-LICENSE.txt', 'bricolage-grotesque-latin-wght-normal.woff2', 'bricolage-grotesque-latin-ext-wght-normal.woff2', 'BRICOLAGE-LICENSE.txt']) {
   await copyFile(path.join(root, 'assets', 'vendor', asset), path.join(output, 'assets', 'vendor', asset));
 }
+const images = [
+  'writing-the-moment-unsplash.jpg',
+  'overhead-desktop-workspace-unsplash.jpg',
+  'small-workshop-panorama-poly-haven.jpg',
+];
+await mkdir(path.join(output, 'assets', 'images'), { recursive: true });
+for (const image of images) await copyFile(path.join(root, 'assets', 'images', image), path.join(output, 'assets', 'images', image));
 await writeFile(path.join(output, 'favicon.svg'), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="18" fill="#1d1d1f"/><text x="32" y="40" fill="#fff" font-family="Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle">C&amp;O</text></svg>\n');
 
 const paths = pages.map(page => page.route === 'home' ? '/' : `/${page.dir}/`);
@@ -181,4 +189,3 @@ if (prelaunch) {
   await writeFile(path.join(output, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${baseUrl}/sitemap.xml\n`);
 }
 console.log(`Sito generato in ${path.relative(root, output)} (${prelaunch ? 'pre-lancio, non indicizzabile' : 'lancio'}).`);
-
